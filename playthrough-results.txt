@@ -1,0 +1,30 @@
+3-player autoplay tail:
+  Player 1 (AI) challenges! Player 2 (AI) reveals ☠️ Poison.
+  Player 2 (AI) is knocked out (revealed Poison during challenge).
+  Player 2 (AI)'s cards return to the draw deck and the deck is reshuffled.
+  Player 1 (AI) swaps back a face-down card to Player 2 (AI).
+Turn 3: Player 3 (AI)
+  Player 3 (AI) draws a card.
+  Player 3 (AI) has no valid cards to offer and ends their turn.
+ROUND 2
+Turn 1: Player 1 (AI)
+  Player 1 (AI) draws a card.
+  Player 1 (AI) offers a card to Player 3 (AI), declaring it is 🟡 Gold.
+  Player 3 (AI) challenges! Player 1 (AI) reveals 🟡 Gold.
+  Player 3 (AI) takes the revealed 🟡 Gold.
+  Player 3 (AI) swaps back a face-down card to Player 1 (AI).
+  Player 3 (AI) has revealed and locked all cards, triggering the end of the game.
+
+4-player autoplay tail:
+New AI-only game started with 4 players. Enjoy spectating!
+ROUND 1
+Turn 1: Player 1 (AI)
+  Player 1 (AI) draws a card.
+  Player 1 (AI) has no valid cards to offer and ends their turn.
+Turn 2: Player 2 (AI)
+  Player 2 (AI) draws a card.
+  Player 2 (AI) offers a card to Player 1 (AI), declaring it is 🛡️ Shield.
+  Player 1 (AI) challenges! Player 2 (AI) reveals 🛡️ Shield.
+  Player 1 (AI) takes the revealed 🛡️ Shield.
+  Player 1 (AI) swaps back a face-down card to Player 2 (AI).
+  Player 1 (AI) has revealed and locked all cards, triggering the end of the game.

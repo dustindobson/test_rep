@@ -1,2 +1,1 @@
-# test_rep
-This is a local test repository
+This is my README!

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Poison Traders Rules</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #060912;
+      color: #f0f4ff;
+      padding: 16px;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1, h2, h3, h4 {
+      color: #facc15;
+      letter-spacing: 0.02em;
+    }
+    h1 { font-size: 2rem; margin-bottom: 0.8rem; }
+    h2 { font-size: 1.4rem; margin: 1.2rem 0 0.4rem; border-bottom: 2px solid rgba(250, 204, 21, 0.35); padding-bottom: 0.3rem; }
+    h3 { font-size: 1.15rem; margin: 0.8rem 0 0.35rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    h4 { font-size: 1rem; margin: 0.6rem 0 0.3rem; color: #f1e3a0; }
+    ul {
+      padding-left: 1.4rem;
+    }
+    li {
+      margin-bottom: 0.2rem;
+    }
+    p {
+      margin-bottom: 0.6rem;
+    }
+    ol {
+      padding-left: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+  <main data-rules-content>
+    <h1>Poison Traders</h1>
+    <p><strong>Poison Traders</strong> is a 3–4 player hidden-role bluffing game of drawing, offering cards, and calling bluffs.</p>
+
+    <h2>Components</h2>
+    <p><strong>Role Cards</strong> (4 total, 1 per player):</p>
+    <ul>
+      <li><strong>Noble</strong> – Scores 1 point per 🟡 Gold.</li>
+      <li><strong>Knight</strong> – Scores 1 point per 🛡️ Shield.</li>
+      <li><strong>Witch</strong> – Scores 1 point per 🧪 Potion.</li>
+      <li><strong>🥷🏽 Assassin</strong> – Scores 1 point per 🗡️ Dagger plus 1 bonus point if any other player is knocked out before the game ends.</li>
+    </ul>
+    <p><strong>Resource Cards</strong> (13 total):</p>
+    <ul>
+      <li>3 × 🟡 Gold</li>
+      <li>3 × 🛡️ Shield</li>
+      <li>3 × 🧪 Potion</li>
+      <li>2 × 🗡️ Dagger</li>
+      <li>2 × ☠️ Poison</li>
+    </ul>
+
+    <h2>Setup</h2>
+    <ol>
+      <li>Shuffle and deal 1 hidden role to each player.</li>
+      <li>Remove any unused roles from the game.</li>
+      <li>Shuffle all resource cards into a single face-down draw deck. No starting cards are dealt.</li>
+    </ol>
+
+    <h2>Gameplay</h2>
+    <p>Play proceeds clockwise. Players may look at their own face-down cards. Revealed cards stay face-up and cannot be offered again. Table talk and bluffing are allowed.</p>
+
+    <h3>Turn Structure: Draw → Offer</h3>
+    <ol>
+      <li><strong>Draw</strong> – Draw the top card of the deck (if any) into your hand.</li>
+      <li><strong>Offer</strong> – Choose any unrevealed card from your hand and declare what it is (truth or lie). Choose a target player and offer the card face-down. The target must either <em>Accept</em> or <em>Challenge</em>.</li>
+    </ol>
+
+    <h3>Offer Resolution</h3>
+    <p><strong>Accept:</strong> Before taking the offered card, the target must Trade Back one other card to you if able (see Trade Back). They then take the offered card into their hand without revealing it.</p>
+    <p><strong>Challenge:</strong> Reveal the offered card.</p>
+    <ul>
+      <li>If it is ☠️ Poison: you are immediately knocked out whether or not you told the truth. Shuffle the Poison back into the deck.</li>
+      <li>If you told the truth: you choose who takes the revealed card (you or the target). Whoever will get the revealed card must Trade Back one other card to the other player if able (see Trade Back).</li>
+      <li>If you lied: the target chooses who takes the revealed card (them or you). Whoever will get the revealed card must Trade Back one other card to the other player if able (see Trade Back).</li>
+    </ul>
+
+    <h3>Trade Back</h3>
+    <p>When you must Trade Back, give one card to the other player, in this order:</p>
+    <ol>
+      <li>If you have no cards, you give nothing.</li>
+      <li>If you have any revealed card, give one of your revealed cards.</li>
+      <li>Otherwise, choose a face-down card from your hand and give that one.</li>
+    </ol>
+
+    <h2>Knockouts & Recycling</h2>
+    <p>A player who ever reveals ☠️ Poison is knocked out. Knocked-out players take no further turns. All of their cards (revealed or not) are shuffled back into the draw deck before play continues.</p>
+
+    <h2>End of Game</h2>
+  <p>The game ends immediately when any of the following happens:</p>
+  <ul>
+    <li>A player needs to draw a card, but the deck has run out of cards.</li>
+    <li>Any player has revealed three cards.</li>
+    <li>Only one player remains in the game.</li>
+  </ul>
+    <p>When the game ends:</p>
+    <ul>
+      <li>All remaining players reveal their hidden role and resource cards.</li>
+      <li>Any player who now reveals Poison is knocked out and cannot win.</li>
+      <li>Remaining players score according to their roles.</li>
+    </ul>
+
+    <h2>Scoring</h2>
+    <ul>
+      <li><strong>Noble</strong>: +1 per 🟡 Gold.</li>
+      <li><strong>Knight</strong>: +1 per 🛡️ Shield.</li>
+      <li><strong>Witch</strong>: +1 per 🧪 Potion.</li>
+      <li><strong>🥷🏽 Assassin</strong>: +1 per 🗡️ Dagger and +1 if any other player was knocked out.</li>
+    </ul>
+  </main>
+</body>
+</html>

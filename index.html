@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Poison Traders – Prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-left">
+      <div class="title-row">
+        <h1>Poison Traders</h1>
+        <button class="version-badge" id="version-badge" aria-label="Show change log">v0.06</button>
+      </div>
+      <p class="subtitle">3–4 player hidden-role bluffing microgame</p>
+    </div>
+    <div class="header-right">
+      <button id="new-game-btn">New Game</button>
+      <button id="show-rules-btn">Rules</button>
+      <div class="debug-controls">
+        <label class="debug-toggle">
+          <input type="checkbox" id="debug-log-toggle" checked /> Log
+        </label>
+        <label class="debug-toggle">
+          <input type="checkbox" id="debug-console-toggle" /> Console
+        </label>
+        <button id="download-debug-btn">Download Debug Log</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <section class="left-column">
+      <section class="status-panel">
+        <div><strong>Current player:</strong> <span id="current-player-label">–</span></div>
+        <div><strong>Phase:</strong> <span id="phase-label">–</span></div>
+      </section>
+
+      <section class="players-panel">
+        <h2>Players</h2>
+        <div id="players-container"></div>
+      </section>
+
+      <section class="draw-pile-panel">
+        <h2>Draw Pile</h2>
+        <div id="draw-pile"></div>
+      </section>
+
+      <section class="controls-panel">
+        <h2>Controls</h2>
+        <div id="controls"></div>
+      </section>
+
+      <section class="player-info-panel">
+        <h2>Player Info</h2>
+        <div id="player-info-block"></div>
+      </section>
+    </section>
+
+    <section class="right-column">
+      <section class="log-panel">
+        <h2>Game Log</h2>
+        <div id="log">
+          <div id="log-entry" class="log-entries"></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Rules overlay -->
+  <div id="rules-overlay" class="overlay hidden">
+    <div class="overlay-content rules-overlay-content">
+      <h2>Rules – Poison Traders</h2>
+      <div id="rules-body" class="rules-body">
+        <div id="rules-inline-content" class="rules-inline-content">
+          <p class="muted">Loading rules…</p>
+        </div>
+        <iframe
+          id="rules-frame"
+          class="rules-frame is-hidden"
+          title="Poison Traders rules"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <button id="close-rules-btn">Close</button>
+    </div>
+  </div>
+
+  <!-- Changelog overlay -->
+  <div id="changelog-overlay" class="overlay hidden">
+    <div class="overlay-content changelog-content">
+      <h2>Poison Traders – Changelog</h2>
+      <p class="muted">Latest updates for version v0.06</p>
+      <div class="changelog-body">
+        <section class="changelog-entry">
+          <h3 class="changelog-version">v0.06</h3>
+          <ul class="changelog-list">
+            <li>Widened the Game Over modal so each row fits comfortably on a single line.</li>
+            <li>Logged this update alongside the last three AI decision-making changes to improve future tuning.</li>
+          </ul>
+        </section>
+        <section class="changelog-entry">
+          <h3 class="changelog-version">v0.05</h3>
+          <ul class="changelog-list">
+            <li>Restyled the Game Over modal into a clean table layout with clearer role, score, and resource columns.</li>
+            <li>Game end now triggers when a player must draw but the deck is empty, matching the updated rules language.</li>
+            <li>Turn numbering in the Game Log now persists across rounds instead of resetting each round.</li>
+            <li>Poison reveals always knock out the challenger’s target in the log, and controls spacing stays tidy during Trade Backs.</li>
+            <li>Rules text updated with the new endgame phrasing and a renamed Gameplay section.</li>
+          </ul>
+        </section>
+        <section class="changelog-entry">
+          <h3 class="changelog-version">v0.04</h3>
+          <ul class="changelog-list">
+            <li>Polished the Game Over summary with AI type badges, clearer spacing, and structured player stats.</li>
+            <li>Updated trade acceptance log lines to combine accept and Trade Back details for consistency.</li>
+            <li>Tightened the Controls section layout to avoid unnecessary vertical expansion.</li>
+          </ul>
+        </section>
+        <section class="changelog-entry">
+          <h3 class="changelog-version">v0.03</h3>
+          <ul class="changelog-list">
+            <li>Documented the last round of UI polish and rules clarifications.</li>
+          </ul>
+        </section>
+        <section class="changelog-entry">
+          <h3 class="changelog-version">v0.02</h3>
+          <ul class="changelog-list">
+            <li>Updated Trade Back order to prioritize giving a face-down hand card before any revealed card.</li>
+            <li>Added a scrollable changelog layout that preserves earlier updates.</li>
+          </ul>
+        </section>
+        <section class="changelog-entry">
+          <h3 class="changelog-version">v0.01</h3>
+          <ul class="changelog-list">
+            <li>Default seat selection now randomizes your starting position.</li>
+            <li>Updated offer and Trade Back rules to match the latest prototype.</li>
+            <li>Adjusted revealed card iconography and clarified rules styling.</li>
+          </ul>
+        </section>
+      </div>
+      <button id="close-changelog-btn">Close</button>
+    </div>
+  </div>
+
+  <!-- Setup overlay -->
+  <div id="setup-overlay" class="overlay hidden">
+    <div class="overlay-content setup-content">
+      <h2>New Game Setup</h2>
+      <p>Choose the player count, your seat, and which AI personalities will join the table.</p>
+      <div class="setup-section">
+        <label for="modal-player-count">Player Count</label>
+        <select id="modal-player-count" class="setup-select"></select>
+      </div>
+      <div class="setup-section">
+        <label for="human-player-count">Human Players</label>
+        <select id="human-player-count" class="setup-select">
+          <option value="1">1 (you play a seat)</option>
+          <option value="0">0 (spectate AI)</option>
+        </select>
+      </div>
+      <div class="setup-section" id="seat-section">
+        <label for="seat-select">Your Seat</label>
+        <select id="seat-select" class="setup-select"></select>
+      </div>
+      <div class="setup-section">
+        <h3>AI Personalities</h3>
+        <p class="muted">Seats assigned to you will ignore the AI selection.</p>
+        <div id="ai-options"></div>
+      </div>
+      <div class="modal-actions">
+        <button id="cancel-setup-btn">Cancel</button>
+        <button id="confirm-setup-btn" class="primary">Start Game</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game over overlay -->
+  <div id="gameover-overlay" class="overlay hidden">
+    <div class="overlay-content" id="gameover-content">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/ai-logic.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
